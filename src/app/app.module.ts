@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatChipsModule} from '@angular/material/chips';
+
+
 
 import { NgModule } from '@angular/core';
 
@@ -20,7 +23,8 @@ import { FormIndicatorComponent } from './form-indicator/form-indicator.componen
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
