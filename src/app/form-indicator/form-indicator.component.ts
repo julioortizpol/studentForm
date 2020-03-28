@@ -11,5 +11,20 @@ export class FormIndicatorComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  chips = [{
+    color: "primary",
+    selected: true,
+    text:"Informacion Personal"
+  },
+  {
+    color: "primary",
+    selected: true,
+    text:"Informacion Familiar"
+  },
+  {
+    color: "primary",
+    selected: true,
+    text:"Registro Academico"
+  }]
 
 }
