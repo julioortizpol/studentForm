@@ -1,1 +1,8 @@
-<p>form-indicator works!</p>
+<div class="centerContainer">
+    <mat-chip-list aria-label="Form indicator">
+        <span class="spacer"></span>
+        <mat-chip class="chipsStyle" *ngFor="let chip of chips" [color]="chip.color" [selected]="chip.selected">
+            <div class="chipText" >{{chip.text}}</div>
+        </mat-chip>
+    </mat-chip-list>
+</div>
