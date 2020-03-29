@@ -3,8 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
-
+import {ReactiveFormsModule} from '@angular/forms'
 
 import { NgModule } from '@angular/core';
 
@@ -31,6 +34,10 @@ import { StudentAcademicInfoComponent } from './student-academic-info/student-ac
     MatToolbarModule,
     MatIconModule,
     MatChipsModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
