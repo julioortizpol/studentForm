@@ -17,7 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormIndicatorComponent } from './form-indicator/form-indicator.component';
 import { StudentPersonalFormComponent } from './student-personal-form/student-personal-form.component';
 import { StudentFamiliarInfoComponent } from './student-familiar-info/student-familiar-info.component';
-import { StudentAcademicInfoComponent } from './student-academic-info/student-academic-info.component';
+import { StudentUniversityDataComponent } from './student-academic-info/student-academic-info.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { StudentAcademicInfoComponent } from './student-academic-info/student-ac
     FormIndicatorComponent,
     StudentPersonalFormComponent,
     StudentFamiliarInfoComponent,
-    StudentAcademicInfoComponent
+    StudentUniversityDataComponent
   ],
   imports: [
     BrowserModule,
