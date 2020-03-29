@@ -9,14 +9,16 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class StudentPersonalFormComponent implements OnInit {
 
   isLinear = true;
-  firstFormGroup: FormGroup;
+  identificationData: FormGroup;
   secondFormGroup: FormGroup;
 
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+    this.identificationData = this._formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      dni: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
