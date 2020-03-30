@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -7,6 +8,9 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core'
+import {MatRadioModule} from '@angular/material/radio';
+
 
 import {ReactiveFormsModule} from '@angular/forms'
 
@@ -39,9 +43,12 @@ import { StudentUniversityDataComponent } from './student-university-data/studen
     MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

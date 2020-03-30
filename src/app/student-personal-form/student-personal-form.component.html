@@ -14,26 +14,72 @@
               <div>
                 <mat-form-field>
                     <mat-label>Cedula</mat-label>
-                    <input matInput placeholder="Coloque su cedula" formControlName="dni" required>
+                    <input matInput  pattern="^.{11,11}$" type = "number" minlength="11" placeholder="Coloque su cedula" formControlName="dni" required>
+                    <mat-error *ngIf="flag">
+                      El formato de la cedula es incorrecto
+                    </mat-error>
+                  </mat-form-field>
+                  
+              </div>
+              <div>
+                <mat-form-field>
+                    <mat-label>Fecha de nacimiento</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
               </div>
-              
+              <div>
+                <label>Sexo: </label>
+                <mat-radio-group formControlName="sexSelect">
+                  <mat-radio-button value="auto" >Masculino</mat-radio-button>
+                  <mat-radio-button value="always" >Femenino</mat-radio-button>
+                </mat-radio-group>
+              </div>
             <div>
-              <button mat-button matStepperNext>Next</button>
+              <button mat-button matStepperNext (click)="validatePersonalInfoFields()">Next</button>
             </div>
           </form>
         </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-          <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out your address</ng-template>
-            <mat-form-field>
-              <mat-label>Address</mat-label>
-              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                     required>
-            </mat-form-field>
+        <mat-step [stepControl]="addressData">
+          <form [formGroup]="addressData">
+            <ng-template matStepLabel>Dirección</ng-template>
+            <div>
+              <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput #mapInput  formControlName="address" placeholder="Ex. 1 Main St, New York, NY"
+                       required>
+              </mat-form-field>
+            </div>
+            <!--<div #mapContainer id="map"></div>-->
             <div>
               <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+              <button mat-button matStepperNext (click)="validateAddressDataFields()">Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="contactData">
+          <form [formGroup]="contactData">
+            <ng-template matStepLabel>Informacion de contacto</ng-template>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput  placeholder="Ex. pat@example.com" formControlName="email" required>
+            </mat-form-field>
+            <div>
+              <mat-form-field>
+                <mat-label>Numero de telefono celular</mat-label>
+                <input matInput type="number" placeholder="EX. 8291023232" formControlName="cellPhoneNumber" required>
+              </mat-form-field>
+            </div>
+              <div>
+                <mat-form-field>
+                    <mat-label>Numero telefono casa</mat-label>
+                    <input matInput type="number" placeholder="EX. 8291023232" >
+                  </mat-form-field>
+              </div>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext (click)="validateContactDataFields()">Next</button>
             </div>
           </form>
         </mat-step>
@@ -42,7 +88,7 @@
           <p>You are now done.</p>
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button >Next page</button>
           </div>
         </mat-step>
       </mat-vertical-stepper>
