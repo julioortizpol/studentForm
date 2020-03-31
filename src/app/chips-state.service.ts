@@ -6,7 +6,7 @@ import {ChipData} from './models/CHIPDATA'
 })
 export class ChipsStateService {
 
-
+  
   private chipsState = new BehaviorSubject<Array<ChipData>>([{
     color: "accent",
     selected: true,

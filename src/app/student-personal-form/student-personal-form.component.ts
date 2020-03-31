@@ -1,7 +1,9 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef,OnChanges,DoCheck } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
-
-
+import {ChipData} from '../models/CHIPDATA'
+import { ChipsStateService } from '../chips-state.service';
+import {Router} from '@angular/router';
+import {colors,appRoutes} from '../utilities/constants'
 
 @Component({
   selector: 'app-student-personal-form',
@@ -9,13 +11,37 @@ import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
   styleUrls: ['./student-personal-form.component.scss']
 })
 
-export class StudentPersonalFormComponent implements OnInit,AfterViewInit {
+export class StudentPersonalFormComponent implements OnInit,AfterViewInit,OnChanges,DoCheck {
+  chips: Array<ChipData>;
+  constructor(private _formBuilder: FormBuilder,private chipsState: ChipsStateService, private router:Router) { 
+  }
+  ngDoCheck(){}
+  ngOnChanges(){}
+  changeForm(){
+    console.log(this.chips);
+    this.chipsState.changeChipState([{
+      color: "primary",
+      selected: true,
+      text:"Informacion Personal"
+    },
+    {
+      color: "accent",
+      selected: true,
+      text:"Informacion Familiar"
+    },
+    {
+      color: "accent",
+      selected: false,
+      text:"Registro Academico"
+    }]);
+    this.router.navigate([appRoutes.familyInfo]);
+  }
 
   ngAfterViewInit() {
     this.getAddresAutoComplete();
-    //this.mapInitializer();
+    this.mapInitializer();
   }
- // @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
+  @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   @ViewChild('mapInput', {static: false}) addressText: ElementRef;
 
   map: google.maps.Map;
@@ -36,7 +62,7 @@ export class StudentPersonalFormComponent implements OnInit,AfterViewInit {
   });
   }
 
-  /*
+
   mapInitializer() {
     let searchBox = new google.maps.places.SearchBox(this.addressText.nativeElement);
     this.map = new google.maps.Map(this.gmap.nativeElement, 
@@ -45,7 +71,6 @@ export class StudentPersonalFormComponent implements OnInit,AfterViewInit {
         zoom: 13,
         mapTypeId: 'roadmap'
       });
-    this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.addressText.nativeElement);
 
     this.map.addListener('bounds_changed',()=>{
       searchBox.setBounds(this.map.getBounds());
@@ -94,17 +119,17 @@ export class StudentPersonalFormComponent implements OnInit,AfterViewInit {
     });
 
     
-   }*/
+   }
    
 
-  isLinear = true;
+  isLinear = false;
   identificationData: FormGroup;
   addressData: FormGroup;
   contactData: FormGroup;
   floatLabelControl = new FormControl('auto');
   dniFormControl = new FormControl('',[Validators.minLength(11), Validators.required])
   flag = true;
-  constructor(private _formBuilder: FormBuilder) { }
+ 
    
   ngOnInit() {
     this.identificationData = this._formBuilder.group({
@@ -123,6 +148,7 @@ export class StudentPersonalFormComponent implements OnInit,AfterViewInit {
       email: ['', Validators.email],
       cellPhoneNumber: ['', Validators.required]
     });
+    this.chipsState.actualChipState.subscribe(chipState => this.chips = chipState);
   }
 
   validatePersonalInfoFields(){

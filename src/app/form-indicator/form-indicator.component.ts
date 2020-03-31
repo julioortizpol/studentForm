@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges,DoCheck } from '@angular/core';
 import { ChipsStateService } from '../chips-state.service';
 import {Router} from '@angular/router';
 import {ChipData} from '../models/CHIPDATA'
@@ -9,11 +9,15 @@ import {colors,appRoutes} from '../utilities/constants'
   templateUrl: './form-indicator.component.html',
   styleUrls: ['./form-indicator.component.scss']
 })
-export class FormIndicatorComponent implements OnInit {
+export class FormIndicatorComponent implements OnInit,OnChanges,DoCheck{
 
-
+ngDoCheck(){}
+  ngOnChanges(){
+    
+  }
   
-  constructor(private chipsState: ChipsStateService, private router:Router) { }
+  constructor(private chipsState: ChipsStateService, private router:Router) { 
+  }
   
   chips: Array<ChipData>;
 
@@ -23,7 +27,7 @@ export class FormIndicatorComponent implements OnInit {
   
   navigateToOtherForm(clickedChipIndex){
     let clikedChip = this.chips[clickedChipIndex];
-    if(clikedChip.color == colors.primary){
+    if(clikedChip.selected){
       switch(clickedChipIndex){
         case 0:
           this.router.navigate([appRoutes.home]);

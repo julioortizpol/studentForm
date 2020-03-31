@@ -37,7 +37,7 @@
                 </mat-radio-group>
               </div>
             <div>
-              <button mat-button matStepperNext (click)="validatePersonalInfoFields()">Next</button>
+              <button mat-button matStepperNext (click)="validatePersonalInfoFields()">Siguiente</button>
             </div>
           </form>
         </mat-step>
@@ -46,15 +46,15 @@
             <ng-template matStepLabel>Dirección</ng-template>
             <div>
               <mat-form-field>
-                <mat-label>Address</mat-label>
+                <mat-label>Dirección</mat-label>
                 <input matInput #mapInput  formControlName="address" placeholder="Ex. 1 Main St, New York, NY"
                        required>
               </mat-form-field>
             </div>
-            <!--<div #mapContainer id="map"></div>-->
+            <div #mapContainer id="map" ></div>
             <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext (click)="validateAddressDataFields()">Next</button>
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button matStepperNext (click)="validateAddressDataFields()">Siguiente</button>
             </div>
           </form>
         </mat-step>
@@ -78,17 +78,17 @@
                   </mat-form-field>
               </div>
             <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext (click)="validateContactDataFields()">Next</button>
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button matStepperNext (click)="validateContactDataFields()">Siguiente</button>
             </div>
           </form>
         </mat-step>
         <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <p>You are now done.</p>
+          <ng-template matStepLabel>Confirmacion</ng-template>
+          <p>Por favor confirme que todos sus datos son correctos</p>
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button >Next page</button>
+            <button mat-button matStepperPrevious>Anterior</button>
+            <button mat-button (click)="changeForm()">Confirmar datos</button>
           </div>
         </mat-step>
       </mat-vertical-stepper>
