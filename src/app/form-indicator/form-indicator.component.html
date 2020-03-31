@@ -1,7 +1,7 @@
 <div class="centerContainer">
     <mat-chip-list aria-label="Form indicator">
         <span class="spacer"></span>
-        <mat-chip class="chipsStyle" *ngFor="let chip of chips" [color]="chip.color" [selected]="chip.selected">
+        <mat-chip class="chipsStyle" *ngFor="let chip of chips; index as i" [color]="chip.color" [selected]="chip.selected" (click)="navigateToOtherForm(i)">
             <div class="chipText" >{{chip.text}}</div>
         </mat-chip>
     </mat-chip-list>
