@@ -1,1 +1,14 @@
-<p>student-academic-info works!</p>
+<div class="container">
+    <div *ngIf = "!doneFloag">
+        <h2 style="text-align: center; margin-top: 3%;">Estamos verificando su información</h2>
+        <div style="padding-left: 42%;">
+            <mat-spinner  [value]="value"></mat-spinner>
+        </div>
+    </div>
+    
+    <div *ngIf = "doneFloag">
+        <mat-icon style="padding-left: 38%; font-size: 10em "  color = "primary" aria-hidden="false" aria-label="done icon" >check_circle_outline</mat-icon>
+        <h1 style="text-align: center; margin-top: 3%;">Felicidades se ha procesado su informacion correctamente, los isguientes pasos fueron enviados a su correo</h1>
+    </div>
+    
+</div>

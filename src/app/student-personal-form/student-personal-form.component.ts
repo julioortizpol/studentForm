@@ -119,11 +119,24 @@ export class StudentPersonalFormComponent implements OnInit,AfterViewInit,OnChan
 
   isLinear = false;
   identificationData: FormGroup;
+  universityData: FormGroup;
   addressData: FormGroup;
   contactData: FormGroup;
   floatLabelControl = new FormControl('auto');
   dniFormControl = new FormControl('',[Validators.minLength(11), Validators.required])
   flag = true;
+  campuses:any = [
+    {value:"c01",viewValue:"Santiago"},
+    {value:"c02",viewValue:"Santo Domingo Norte"},
+    {value:"c03",viewValue:"La caleta"},
+  ]
+
+  careers:any = [
+    {value:"ca01",viewValue:"ING. Mecatronica"},
+    {value:"ca02",viewValue:"ING. Software"},
+    {value:"ca03",viewValue:"ING. Seguridad informatica"},
+    {value:"ca04",viewValue:"ING. Sistemas"},
+    {value:"ca05",viewValue:"ING. Civil"},]
  
    
   ngOnInit() {
@@ -134,6 +147,12 @@ export class StudentPersonalFormComponent implements OnInit,AfterViewInit,OnChan
       dateOfBirth:['', Validators.required],
       sexSelect: this.floatLabelControl
 
+    });
+
+
+    this.universityData = this._formBuilder.group({
+      career: ['', Validators.required],
+      campus: ['', Validators.required]
     });
 
     this.addressData = this._formBuilder.group({
@@ -148,6 +167,11 @@ export class StudentPersonalFormComponent implements OnInit,AfterViewInit,OnChan
 
   validatePersonalInfoFields(){
     if(this.identificationData.invalid){
+      alert("Por favor complete los campos que falfan");
+    }
+  }
+  validateUniversityInfoFields(){
+    if(this.universityData.invalid){
       alert("Por favor complete los campos que falfan");
     }
   }

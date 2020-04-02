@@ -83,8 +83,35 @@
             </div>
           </form>
         </mat-step>
+        <mat-step [stepControl]="universityData">
+          <form [formGroup]="universityData">
+            <ng-template matStepLabel>Información de registro</ng-template>
+            <h4>Seleccione el recinto universitario donde va a tomar clases</h4>
+            <mat-form-field>
+              <mat-label>Recintos</mat-label>
+              <mat-select required formControlName="career">
+                <mat-option *ngFor="let campus of campuses" [value]="campus.value">
+                  {{campus.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <h4>Seleccione la carrera que desea cursar</h4>
+            <mat-form-field>
+              <mat-label>Carreras</mat-label>
+              <mat-select required formControlName="campus">
+                <mat-option *ngFor="let career of careers" [value]="career.value">
+                  {{career.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button matStepperNext (click)="validateContactDataFields()">Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
         <mat-step>
-          <ng-template matStepLabel>Confirmacion</ng-template>
+          <ng-template matStepLabel>Confirmación</ng-template>
           <p>Por favor confirme que todos sus datos son correctos</p>
           <div>
             <button mat-button matStepperPrevious>Anterior</button>
