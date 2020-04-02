@@ -117,7 +117,7 @@ export class StudentPersonalFormComponent implements OnInit,AfterViewInit,OnChan
    }
    
 
-  isLinear = false;
+  isLinear = true;
   identificationData: FormGroup;
   universityData: FormGroup;
   addressData: FormGroup;
