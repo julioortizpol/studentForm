@@ -10,18 +10,13 @@ export class ChipsStateService {
   private chipsState = new BehaviorSubject<Array<ChipData>>([{
     color: "accent",
     selected: true,
-    text:"Informacion Personal"
+    text:"Formulario de registro"
   },
   {
     color: "accent",
     selected: false,
-    text:"Informacion Familiar"
-  },
-  {
-    color: "accent",
-    selected: false,
-    text:"Registro Academico"
-  }]);
+    text:"Confirmacion de registro"
+  },]);
 
   actualChipState = this.chipsState.asObservable();
 

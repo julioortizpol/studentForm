@@ -22,17 +22,12 @@ export class StudentPersonalFormComponent implements OnInit,AfterViewInit,OnChan
     this.chipsState.changeChipState([{
       color: "primary",
       selected: true,
-      text:"Informacion Personal"
+      text:"Formulario de registro"
     },
     {
       color: "accent",
       selected: true,
-      text:"Informacion Familiar"
-    },
-    {
-      color: "accent",
-      selected: false,
-      text:"Registro Academico"
+      text:"Confirmación de registro"
     }]);
     this.router.navigate([appRoutes.familyInfo]);
   }
